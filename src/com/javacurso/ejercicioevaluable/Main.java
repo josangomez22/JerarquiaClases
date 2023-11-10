@@ -21,8 +21,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Moto moto = new Moto();
-		moto.asignarMarca("Toyota");
-		moto.asignarModelo("Rh");
+		moto.asignarMarca("Cupra");
+		moto.asignarModelo("ff");
 		moto.asignarAnio(2023);
 		moto.encender();
 		moto.conducir();
@@ -36,7 +36,7 @@ public class Main {
 		Patinete patinete= new Patinete();
 		patinete.asignarMarca("Xiaomi");
 		patinete.asignarModelo("MI 13");
-		patinete.asignarAnio(2020);
+		patinete.asignarAnio(2010);
 		patinete.encender();
 		patinete.conducir();
 		patinete.apagar();

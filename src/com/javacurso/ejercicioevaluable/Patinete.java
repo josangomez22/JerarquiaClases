@@ -3,6 +3,8 @@
  */
 package com.javacurso.ejercicioevaluable;
 
+import com.cursojava.excepciones.MisExcepciones;
+
 /**
  * @author José Antonio Gómez Rodríguez
  * @version 1.0.0
@@ -56,8 +58,16 @@ public class Patinete extends Vehiculo implements Conducible {
 	
 	@Override
 	public void asignarMarca(String marca) {
-		this.marca = marca;
-		System.out.println("Marca asignada " + marca);
+		try {
+			if( marca != "Xiaomi") {
+				throw new MisExcepciones(2);
+			}else {
+				this.marca = marca;
+				System.out.println("Marca asignada " + marca);
+			}
+		}catch(MisExcepciones ex) {
+				System.out.println(ex.getMessage());
+		}
 	}
 
 	/*
@@ -85,7 +95,19 @@ public class Patinete extends Vehiculo implements Conducible {
 
 	@Override
 	public String recuperarVehiculoCompleto() {
-		System.out.println("Este es tu vehiculo: " + marca+ " "+ modelo + " "+ anio);
+		
+		try {
+			if(marca != "Xiaomi") {
+				throw new MisExcepciones(4);
+			}else if(anio < 2021) {
+				throw new MisExcepciones(1);
+			}else {
+				System.out.println("Este es tu vehiculo: " + marca+ " "+ modelo + " "+ anio);
+			}
+		}catch(MisExcepciones ex) {
+			System.out.println(ex.getMessage());
+		}
+		
 		return marca + modelo + anio;
 	}
 	

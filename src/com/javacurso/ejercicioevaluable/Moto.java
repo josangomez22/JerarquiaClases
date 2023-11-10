@@ -3,6 +3,8 @@
  */
 package com.javacurso.ejercicioevaluable;
 
+import com.cursojava.excepciones.MisExcepciones;
+
 /**
  * @author José Antonio Gómez Rodríguez
  * @version 1.0.0
@@ -67,27 +69,57 @@ public class Moto extends Vehiculo implements Conducible {
 
 	@Override
 	public void asignarModelo(String modelo) {
-		this.modelo = modelo;
-		System.out.println("Modelo asignado: " + modelo);
+		try {
+			if(modelo != "Yaris") {
+				throw new MisExcepciones(3);
+			}else {
+				this.modelo = modelo;
+				System.out.println("Modelo asignado: " + modelo);
+			}
+		}catch(MisExcepciones ex) {
+				System.out.println(ex.getMessage());
+			}
 	}
 	
 	/*
-	 * Metodo para asignarle un año a la moto, entra por parametro en formato Integer y devuelve un texto por consola
+	 * Metodo para asignarle un año a la moto, entra por parametro en formato Integer
+	 *  y devuelve un texto por consola, tiene excepciones sino cumple con 
+	 *  el año
 	 */
 
 	@Override
 	public void asignarAnio(int anio) {
-		this.anio = anio;
-		System.out.println("Año asignado: " + anio);
+		try {
+			if(anio < 2015) {
+				throw new MisExcepciones(1);
+			}else {
+				this.anio = anio;
+				System.out.println("Año asignado: " + anio);
+			}
+		}catch(MisExcepciones ex) {
+				System.out.println(ex.getMessage());
+			}
+			
 	}
 	
 	/*
 	 * Metodo para recuperar el vehiculo completo y devuelve un texto por consola
+	 * Tiene excepciones si no cumple con el modelo y el año
 	 */
 
 	@Override
 	public String recuperarVehiculoCompleto() {
-		System.out.println("Este es tu vehiculo: " + marca+ " "+ modelo + " "+ anio);
+		try {
+			if(modelo != "Yaris") {
+				throw new MisExcepciones(4);
+			}else if(anio < 2021) {
+				throw new MisExcepciones(1);
+			}else {
+				System.out.println("Este es tu vehiculo: " + marca+ " "+ modelo + " "+ anio);
+			}
+		}catch(MisExcepciones ex) {
+			System.out.println(ex.getMessage());
+		}
 		return marca + modelo + anio;
 	}
 	
